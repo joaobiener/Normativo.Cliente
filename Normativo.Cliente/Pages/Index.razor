@@ -1,0 +1,22 @@
+﻿@page "/"
+@using Normativo.Cliente.Components
+
+<PageTitle>Index</PageTitle>
+
+<Home Title="Report Normativos UnimedLF."
+	  @attributes="AdditionalAttributes">
+	<InformacoesAdicionaisContent>
+		Aqui você pode pesquisar os Logs de acesso aos Normativos e Politicas 
+		da Unimed Leste Fluminense!
+	</InformacoesAdicionaisContent>
+</Home>
+
+@code
+{
+	public Dictionary<string, object> AdditionalAttributes { get; set; } =
+		new Dictionary<string, object>
+		{
+			{ "src", "/assets/NormativoHomeV2.jpg" },
+			{ "alt", "Normativos e Politicas" }
+		};
+}

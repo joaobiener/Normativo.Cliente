@@ -1,0 +1,51 @@
+﻿@if (viewLogsNormativos.Any())
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Matrícula</th>
+				<th scope="col">Colaborador</th>
+				<th scope="col">Gerência</th>
+				<th scope="col">Coordenação</th>
+				<th scope="col">Login</th>
+				<th scope="col">Normativo</th>
+				<th scope="col">Data Leitura</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var viewLogNormativo in viewLogsNormativos)
+			{
+				<tr>
+					<td>
+						@viewLogNormativo.Matricula
+					</td>
+					<td class="align-middle">
+						@viewLogNormativo.NomeFuncionario
+					</td>
+					<td class="align-middle">
+						@viewLogNormativo.NomeGerencia
+					</td>
+					<td class="align-middle">
+						@viewLogNormativo.NomeCoordenacao
+					</td>
+					<td class="align-middle">
+						@viewLogNormativo.LoginName
+					</td>
+					<td class="align-middle">
+						@viewLogNormativo.NomeNormativo
+					</td>
+					<td class="align-middle">
+						@viewLogNormativo.DataLeitura
+					</td>
+
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<span>
+		Aguarde, por favor...
+	</span>
+}

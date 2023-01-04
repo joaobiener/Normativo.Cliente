@@ -1,0 +1,5 @@
+﻿<section class="search-input">
+	<input type="text" class="form-control" placeholder="Busca por Colaborador"
+		   @bind-value="@SearchTerm" @bind-value:event="oninput"
+		   @onkeyup="SearchChanged" />
+</section>
