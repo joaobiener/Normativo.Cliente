@@ -23,7 +23,7 @@ namespace Normativo.Cliente.HttpInterceptor
 			if(e.Response is null)
 			{
 				_navManager.NavigateTo("/error");
-				throw new HttpResponseException("Server not available.");
+				throw new HttpResponseException("Servidor não disponível.");
 			}
 
 			var message = "";
@@ -34,15 +34,15 @@ namespace Normativo.Cliente.HttpInterceptor
 				{
 					case HttpStatusCode.NotFound:
 						_navManager.NavigateTo("/404");
-						message = "Resource not found.";
+						message = "Recurso não encontrado.";
 						break;
 					case HttpStatusCode.Unauthorized:
 						_navManager.NavigateTo("/unauthorized");
-						message = "Unauthorized access";
+						message = "Acesso não autorizado";
 						break;
 					default:
 						_navManager.NavigateTo("/error");
-						message = "Something went wrong. Please contact the administrator.";
+						message = "Algo deu errado. Entre em contato com o administrador.";
 						break;
 				}
 
