@@ -1,6 +1,6 @@
 ﻿@if (viewLogsNormativos.Any())
 {
-	<table class="table">
+	<table class="table table-success table-striped">
 		<thead>
 			<tr>
 				<th scope="col">Matrícula</th>
@@ -9,13 +9,13 @@
 				<th scope="col">Coordenação</th>
 				<th scope="col">Login</th>
 				<th scope="col">Normativo</th>
-				<th scope="col">Data Leitura</th>
+				<th scope="col">Data de Aceite</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach (var viewLogNormativo in viewLogsNormativos)
 			{
-				<tr>
+				<tr >
 					<td>
 						@viewLogNormativo.Matricula
 					</td>

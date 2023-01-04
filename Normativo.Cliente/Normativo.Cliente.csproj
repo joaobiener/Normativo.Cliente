@@ -21,4 +21,10 @@
     <PackageReference Include="Toolbelt.Blazor.HttpClientInterceptor" Version="10.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Microservices\Normativo.ULS.Services\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\..\Microservices\Normativo.ULS.Services\Shared\Shared.csproj" />
+  </ItemGroup>
+
+	
 </Project>

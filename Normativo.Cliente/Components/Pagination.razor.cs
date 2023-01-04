@@ -26,7 +26,7 @@ namespace Normativo.Cliente.Components
         {
             _links = new List<PagingLink>();
 
-            _links.Add(new PagingLink(MetaData.CurrentPage - 1, MetaData.HasPrevious, "Previous"));
+            _links.Add(new PagingLink(MetaData.CurrentPage - 1, MetaData.HasPrevious, "<"));
 
             for (int i = 1; i <= MetaData.TotalPages; i++)
             {
@@ -37,7 +37,7 @@ namespace Normativo.Cliente.Components
                 }
             }
 
-            _links.Add(new PagingLink(MetaData.CurrentPage + 1, MetaData.HasNext, "Next"));
+            _links.Add(new PagingLink(MetaData.CurrentPage + 1, MetaData.HasNext, ">"));
         }
 
         private async Task OnSelectedPage(PagingLink link)

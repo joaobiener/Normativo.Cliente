@@ -34,7 +34,7 @@ namespace Normativo.Cliente.HttpRepository
 			};
 
 			var response =
-				await _client.GetAsync(QueryHelpers.AddQueryString("ReportLogsNormativo", queryStringParam));
+				await _client.GetAsync(QueryHelpers.AddQueryString("ReportLogsNormativo/GetByRequest", queryStringParam));
 
 			var content = await response.Content.ReadAsStringAsync();
 
