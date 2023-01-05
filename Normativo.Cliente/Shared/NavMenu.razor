@@ -1,6 +1,9 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject IWebAssemblyHostEnvironment hostEnviroment
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Relatório de Normativos</a>
+        
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -8,12 +11,28 @@
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+
+   
     <nav class="flex-column">
+
+        @if (!hostEnviroment.IsProduction())
+        {
+            string imageEnv = hostEnviroment.IsDevelopment() ? "oi oi-code" : "oi oi-bug";
+
+            <div class="nav-item px-3">
+                <a class="nav-link active" role="link" aria-disabled="true">
+                    <span class="@imageEnv " aria-hidden="true"></span> @hostEnviroment.Environment
+                </a>
+            </div>
+        }
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+
                 <span class="oi oi-home" aria-hidden="true"></span> Home
+ 
             </NavLink>
         </div>
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="reportnormativo">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Logs Normativo
@@ -25,9 +44,13 @@
 </div>
 
 @code {
+
     private bool collapseNavMenu = true;
+    private string? imgEnviroment;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    
 
     private void ToggleNavMenu()
     {

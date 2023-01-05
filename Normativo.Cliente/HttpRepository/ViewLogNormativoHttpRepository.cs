@@ -15,13 +15,12 @@ namespace Normativo.Cliente.HttpRepository
 		private readonly JsonSerializerOptions _options =
 			new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-		public ViewLogNormativoHttpRepository(HttpClient client, NavigationManager navManager)
+		public ViewLogNormativoHttpRepository(HttpClient client, NavigationManager navManager,IConfiguration configuration)
 		{
 			_client = client;
 			_navManager = navManager;
-		}
 
-   
+		}
 
         public async Task<PagingResponse<ViewLogsNormativo>> GetLogsNormativo(ViewLogNormativoParameters viewLogNormativoParameters)
         {

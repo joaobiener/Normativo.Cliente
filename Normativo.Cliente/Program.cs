@@ -4,16 +4,19 @@ using Normativo.Cliente.HttpRepository;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
+using Entities.Configuration;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
+var apiConfiguration = new ApiConfiguration();
+builder.Configuration.Bind("ApiConfiguration",apiConfiguration);
 
 builder.Services.AddHttpClient("LogsNormativoAPI", (sp, cl) =>
 {
-    cl.BaseAddress = new Uri("https://localhost:5011/");
+	cl.BaseAddress = new Uri(apiConfiguration.BaseAddress); //Development
     cl.EnableIntercept(sp);
 });
 
