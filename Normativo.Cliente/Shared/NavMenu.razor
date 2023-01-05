@@ -17,11 +17,12 @@
 
         @if (!hostEnviroment.IsProduction())
         {
-            string imageEnv = hostEnviroment.IsDevelopment() ? "oi oi-code" : "oi oi-bug";
+            string imageEnv = hostEnviroment.IsDevelopment() ? "bi bi-code-square" : "bi bi-bug";
 
             <div class="nav-item px-3">
-                <a class="nav-link active" role="link" aria-disabled="true">
-                    <span class="@imageEnv " aria-hidden="true"></span> @hostEnviroment.Environment
+               
+                <a class="nav-link inactive noHover fs-3" role="link" aria-disabled="true">
+                    <i class="@imageEnv"></i>@hostEnviroment.Environment
                 </a>
             </div>
         }

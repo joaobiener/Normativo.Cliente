@@ -5,18 +5,19 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 using Entities.Configuration;
+using Microsoft.Extensions.Options;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
-var apiConfiguration = new ApiConfiguration();
-builder.Configuration.Bind("ApiConfiguration",apiConfiguration);
+
 
 builder.Services.AddHttpClient("LogsNormativoAPI", (sp, cl) =>
 {
-	cl.BaseAddress = new Uri(apiConfiguration.BaseAddress); //Development
+    var apiConfiguration = sp.GetRequiredService<IOptions<ApiConfiguration>>();
+	cl.BaseAddress = new Uri(apiConfiguration.Value.BaseAddress); //Development
     cl.EnableIntercept(sp);
 });
 
@@ -28,5 +29,8 @@ builder.Services.AddHttpClientInterceptor();
 builder.Services.AddScoped<IViewLogNormativoHttpRepository, ViewLogNormativoHttpRepository>();
 
 builder.Services.AddScoped<HttpInterceptorService>();
+
+builder.Services.Configure<ApiConfiguration>
+        (builder.Configuration.GetSection("ApiConfiguration"));
 
 await builder.Build().RunAsync();

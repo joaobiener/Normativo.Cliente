@@ -5,6 +5,9 @@ html, body {
     font-size: 12px;
 }
 
+.noHover {
+    pointer-events: none;
+}
 .page-link {
     color: #1d7321;
     border: 1px solid #dee2e6;
