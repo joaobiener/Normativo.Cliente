@@ -22,7 +22,7 @@ namespace Normativo.Cliente.HttpRepository
 
 		}
 
-        public async Task<PagingResponse<ViewLogsNormativo>> GetLogsNormativo(ViewLogNormativoParameters viewLogNormativoParameters)
+        public async Task<PagingResponse<ViewLogsNormativo>> GetLogsNormativo(ViewLogNormativoParameters viewLogNormativoParameters,Dictionary<string,string> nomeNormativo)
         {
 			var queryStringParam = new Dictionary<string, string>
 			{
@@ -32,8 +32,18 @@ namespace Normativo.Cliente.HttpRepository
 				["orderBy"] = viewLogNormativoParameters.OrderBy == null ? "" : viewLogNormativoParameters.OrderBy
 			};
 
+			
+			var queryStringParamMerged = queryStringParam
+							 .Concat(nomeNormativo)
+							 .GroupBy(i => i.Key)
+                 .ToDictionary(
+					 group => group.Key, 
+                     group => group.First().Value);
+
+
+
 			var response =
-				await _client.GetAsync(QueryHelpers.AddQueryString("ReportLogsNormativo/GetByRequest", queryStringParam));
+				await _client.GetAsync(QueryHelpers.AddQueryString("ReportLogsNormativo/GetByRequest", queryStringParamMerged));
 
 			var content = await response.Content.ReadAsStringAsync();
 

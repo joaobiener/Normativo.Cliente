@@ -3,6 +3,8 @@ using Normativo.Cliente.HttpRepository;
 using Entities.Models;
 using Shared.RequestFeatures;
 using Microsoft.AspNetCore.Components;
+using Normativo.Cliente.Components;
+using Shared.DataTransferObjects;
 
 namespace Normativo.Cliente.Pages
 {
@@ -16,8 +18,13 @@ namespace Normativo.Cliente.Pages
 
 		private ViewLogNormativoParameters _viewLogNormativoParameters = new ViewLogNormativoParameters();
 
+		Dictionary<string, string> _nomeNormativoParam = new Dictionary<string, string>();
+
+
+		private string _selectNomeNormativo = "";
 		[Inject]
 		public IViewLogNormativoHttpRepository? ViewLogsNormativoRepo { get; set; }
+
 
 		[Inject]
 		public HttpInterceptorService? Interceptor { get; set; }
@@ -31,10 +38,12 @@ namespace Normativo.Cliente.Pages
 
 		private async Task SelectedPage(int page)
 		{
+			
 			_viewLogNormativoParameters.PageNumber = page;
 			await GetLogsNormativo();
 		}
 
+		//Busca de todos os normtativos
         private async Task GetNomeNormativos()
         {
             var pagingResponse = await ViewLogsNormativoRepo.GetNomeNormativo(_viewLogNormativoParameters);
@@ -44,7 +53,7 @@ namespace Normativo.Cliente.Pages
         }
         private async Task GetLogsNormativo()
 		{
-			var pagingResponse = await ViewLogsNormativoRepo.GetLogsNormativo(_viewLogNormativoParameters);
+			var pagingResponse = await ViewLogsNormativoRepo.GetLogsNormativo(_viewLogNormativoParameters, _nomeNormativoParam);
 
 			ViewLogNormativoList = pagingResponse.Items;
 			MetaData = pagingResponse.MetaData;
@@ -66,6 +75,14 @@ namespace Normativo.Cliente.Pages
 			await GetLogsNormativo();
 		}
 
+		private async Task SelectChanged(string searchTerm)
+		{
+			_viewLogNormativoParameters.PageNumber = 1;
+			_nomeNormativoParam.Clear();
+			_nomeNormativoParam.Add("NomeNormativo",searchTerm);
+
+			await GetLogsNormativo();
+		}
 		private async Task SortChanged(string orderBy)
 		{
 			_viewLogNormativoParameters.OrderBy = orderBy;

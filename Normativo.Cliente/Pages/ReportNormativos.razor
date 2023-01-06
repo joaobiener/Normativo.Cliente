@@ -2,10 +2,10 @@
 @using Normativo.Cliente.Components
 
 <div class="row">
-	<div class="col-md-4">
-		<NomeNormativo OnSelectChanged="SearchChanged" NomeNormativoList="ViewNomeNormativoList" />
+	<div class="col-md-5">
+		<NomeNormativo OnSelectChanged="SelectChanged" NomeNormativoList="ViewNomeNormativoList" />
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-5">
 		<Search OnSearchChanged="SearchChanged" />
 	</div>
 	<div class="col-md-2">
@@ -22,7 +22,7 @@
 	<div class="col">
 		<Pagination MetaData="MetaData" Spread="1" SelectedPage="SelectedPage" />
 	</div>
-	<div class="col">
+	<div class="col-md-1">
 		<PageSizeDropDown SelectedPageSize="SetPageSize" />
 	</div>
 </div>
