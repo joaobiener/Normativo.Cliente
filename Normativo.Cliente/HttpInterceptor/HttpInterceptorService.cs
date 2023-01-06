@@ -22,7 +22,7 @@ namespace Normativo.Cliente.HttpInterceptor
 		{
 			if(e.Response is null)
 			{
-				_navManager.NavigateTo("/error");
+				_navManager.NavigateTo("error");
 				throw new HttpResponseException("Servidor não disponível.");
 			}
 

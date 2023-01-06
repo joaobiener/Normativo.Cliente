@@ -9,7 +9,7 @@ namespace Normativo.Cliente.Pages
 
 		public void NavigateToHome()
 		{
-			NavigationManager.NavigateTo("/");
+			NavigationManager.NavigateTo("index");
 		}
 	}
 }

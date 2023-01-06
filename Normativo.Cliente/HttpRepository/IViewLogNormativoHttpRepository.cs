@@ -8,6 +8,7 @@ namespace Normativo.Cliente.HttpRepository
     public interface IViewLogNormativoHttpRepository
 	{
 		Task<PagingResponse<ViewLogsNormativo>> GetLogsNormativo(ViewLogNormativoParameters viewLogNormativoParameters);
+        Task<PagingResponse<string>> GetNomeNormativo(ViewLogNormativoParameters viewLogNormativoParameters);
 
 	}
 }

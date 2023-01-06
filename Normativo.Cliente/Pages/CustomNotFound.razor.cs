@@ -5,11 +5,11 @@ namespace Normativo.Cliente.Pages
     public partial class CustomNotFound
 	{
 		[Inject]
-		public NavigationManager NavigationManager { get; set; }
+		public NavigationManager navigationManager { get; set; }
 
 		public void NavigateToHome()
 		{
-			NavigationManager.NavigateTo("/");
+			navigationManager.NavigateTo("index");
 		}
 	}
 }

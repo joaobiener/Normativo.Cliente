@@ -9,6 +9,9 @@ namespace Normativo.Cliente.Pages
 	public partial class ReportNormativos : IDisposable
 	{
 		public List<ViewLogsNormativo> ViewLogNormativoList { get; set; } = new List<ViewLogsNormativo>();
+
+		public List<string> ViewNomeNormativoList { get; set; } = new List<string>();
+
 		public MetaData MetaData { get; set; } = new MetaData();
 
 		private ViewLogNormativoParameters _viewLogNormativoParameters = new ViewLogNormativoParameters();
@@ -23,6 +26,7 @@ namespace Normativo.Cliente.Pages
 		{
 			Interceptor.RegisterEvent();
 			await GetLogsNormativo();
+			await GetNomeNormativos();
 		}
 
 		private async Task SelectedPage(int page)
@@ -31,7 +35,14 @@ namespace Normativo.Cliente.Pages
 			await GetLogsNormativo();
 		}
 
-		private async Task GetLogsNormativo()
+        private async Task GetNomeNormativos()
+        {
+            var pagingResponse = await ViewLogsNormativoRepo.GetNomeNormativo(_viewLogNormativoParameters);
+
+			ViewNomeNormativoList = pagingResponse.Items;
+            MetaData = pagingResponse.MetaData;
+        }
+        private async Task GetLogsNormativo()
 		{
 			var pagingResponse = await ViewLogsNormativoRepo.GetLogsNormativo(_viewLogNormativoParameters);
 

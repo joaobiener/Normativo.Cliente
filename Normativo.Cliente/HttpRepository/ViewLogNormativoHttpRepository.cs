@@ -46,5 +46,30 @@ namespace Normativo.Cliente.HttpRepository
 
 			return pagingResponse;
 		}
-	}
+
+        public async Task<PagingResponse<string>> GetNomeNormativo(ViewLogNormativoParameters viewLogNormativoParameters)
+		{
+			var queryStringParam = new Dictionary<string, string>
+			{
+				["pageNumber"] = viewLogNormativoParameters.PageNumber.ToString(),
+				["pageSize"] = viewLogNormativoParameters.PageSize.ToString(),
+				["searchTerm"] = viewLogNormativoParameters.SearchTerm == null ? string.Empty : viewLogNormativoParameters.SearchTerm,
+				["orderBy"] = viewLogNormativoParameters.OrderBy == null ? "" : viewLogNormativoParameters.OrderBy
+			};
+
+			var response =
+                await _client.GetAsync(QueryHelpers.AddQueryString("ReportLogsNormativo/GetNormativo", queryStringParam));
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            var pagingResponse = new PagingResponse<string>
+            {
+                Items = JsonSerializer.Deserialize<List<string>>(content, _options),
+                MetaData = JsonSerializer.Deserialize<MetaData>(
+                    response.Headers.GetValues("X-Pagination").First(), _options)
+            };
+
+            return pagingResponse;
+        }
+    }
 }

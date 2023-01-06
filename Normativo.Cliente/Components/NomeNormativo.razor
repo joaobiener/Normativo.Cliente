@@ -1,0 +1,15 @@
+﻿<section class="search-input">
+	<select class="form-select" @onchange="@OnSelectAsync">
+		@if (NomeNormativoList.Any())
+		{
+
+				@foreach (var nome in NomeNormativoList)
+				{
+					<option value=@nome>@nome</option>
+				}
+		
+		}
+	</select>
+
+		  
+</section>
