@@ -32,8 +32,9 @@ namespace Normativo.Cliente.Pages
 		protected async override Task OnInitializedAsync()
 		{
 			Interceptor.RegisterEvent();
-			await GetLogsNormativo();
 			await GetNomeNormativos();
+			await GetLogsNormativo();
+
 		}
 
 		private async Task SelectedPage(int page)
