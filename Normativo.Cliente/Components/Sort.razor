@@ -1,6 +1,8 @@
-﻿<section>
-	<select class="form-select" @onchange="ApplySort">
-		<option value="-1">-Ordem por-</option>
+﻿<div class="form-floating">
+
+
+	<select class="form-select" id="floatingSelectSort" aria-label="Floating Sort" @onchange="ApplySort">
+
 		<option value="nomeFuncionario">Colaborador</option>
 		<option value="nomeFuncionario desc">Colaborador: Descendente</option>
 		<option value="DataLeitura">Data Aceite</option>
@@ -9,4 +11,5 @@
 		<option value="NomeNormativo">Normativo</option>
 
 	</select>
-</section>
+	<label for="floatingSelectSort">Ordenar Por</label>
+</div>

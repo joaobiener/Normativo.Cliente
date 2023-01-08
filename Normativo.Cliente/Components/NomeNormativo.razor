@@ -1,5 +1,7 @@
-﻿<section class="search-input">
-	<select class="form-select" @onchange="@OnSelectAsync">
+﻿<div class="form-floating">
+
+
+	<select class="form-select" id="floatingSelect" aria-label="Floating label select example" @onchange="@OnSelectAsync">
 		@if (NomeNormativoList.Any())
 		{
 
@@ -10,6 +12,7 @@
 		
 		}
 	</select>
+	<label for="floatingSelect">Normativo</label>
 
 		  
-</section>
+</div>

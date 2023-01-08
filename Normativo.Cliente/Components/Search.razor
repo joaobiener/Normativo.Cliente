@@ -1,5 +1,8 @@
-﻿<section class="search-input">
+﻿<div class="form-floating">
 	<input type="text" class="form-control" placeholder="Busca por Colaborador/Gerência/Coordenação"
 		   @bind-value="@SearchTerm" @bind-value:event="oninput"
-		   @onkeyup="SearchChanged" />
-</section>
+		   @onkeyup="SearchChanged"
+		   id="floatingSearch" />
+	<label for="floatingSearch">Busque por Colaborador, Gereência ou Coordenação</label>
+</div>
+
