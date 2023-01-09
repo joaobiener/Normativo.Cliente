@@ -33,15 +33,15 @@ namespace Normativo.Cliente.HttpInterceptor
 				switch (e.Response.StatusCode)
 				{
 					case HttpStatusCode.NotFound:
-						_navManager.NavigateTo("/404");
+						_navManager.NavigateTo("404");
 						message = "Recurso não encontrado.";
 						break;
 					case HttpStatusCode.Unauthorized:
-						_navManager.NavigateTo("/unauthorized");
+						_navManager.NavigateTo("unauthorized");
 						message = "Acesso não autorizado";
 						break;
 					default:
-						_navManager.NavigateTo("/error");
+						_navManager.NavigateTo("error");
 						message = "Algo deu errado. Entre em contato com o administrador.";
 						break;
 				}
