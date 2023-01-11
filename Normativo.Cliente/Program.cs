@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 using Entities.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Components.Authorization;
+using Normativo.Cliente.AuthProviders;
+
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -33,4 +36,7 @@ builder.Services.AddScoped<HttpInterceptorService>();
 builder.Services.Configure<ApiConfiguration>
         (builder.Configuration.GetSection("ApiConfiguration"));
 
+
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthenticationStateProvider, TestAuthStateProvider>();
 await builder.Build().RunAsync();

@@ -29,10 +29,14 @@ a, .btn-link {
     color: #0071c1;
 }
 
+/* Configuração Paginação da Impressão - Inicio */
+
+
+
 .btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+color: #fff;
+background-color: #1b6ec2;
+border-color: #1861ac;
 }
 .form-control:focus {
     border-color: #1d7321;

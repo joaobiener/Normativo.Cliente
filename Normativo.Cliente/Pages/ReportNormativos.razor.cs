@@ -3,8 +3,8 @@ using Normativo.Cliente.HttpRepository;
 using Entities.Models;
 using Shared.RequestFeatures;
 using Microsoft.AspNetCore.Components;
-using Normativo.Cliente.Components;
-using Shared.DataTransferObjects;
+using Microsoft.JSInterop;
+
 
 namespace Normativo.Cliente.Pages
 {
@@ -21,12 +21,13 @@ namespace Normativo.Cliente.Pages
 		Dictionary<string, string> _nomeNormativoParam = new Dictionary<string, string>();
 
 
-		private string _selectNomeNormativo = "";
+        private string _selectNomeNormativo = "";
 		[Inject]
 		public IViewLogNormativoHttpRepository? ViewLogsNormativoRepo { get; set; }
 
 
-		[Inject]
+
+        [Inject]
 		public HttpInterceptorService? Interceptor { get; set; }
 
 		protected async override Task OnInitializedAsync()
@@ -90,7 +91,14 @@ namespace Normativo.Cliente.Pages
 
 			await GetLogsNormativo();
 		}
+        [Inject]
+        public IJSRuntime IJSRuntime { get; set; }
+        public async Task Print()
+        {
 
-		public void Dispose() => Interceptor.DisposeEvent();
+            await IJSRuntime.InvokeVoidAsync("Print", "Inprime Relatório");
+        }
+
+        public void Dispose() => Interceptor.DisposeEvent();
 	}
 }

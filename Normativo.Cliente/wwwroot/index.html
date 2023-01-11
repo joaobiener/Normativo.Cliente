@@ -4,12 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Normativo.Cliente</title>
-    <base href="/normativo/" />
+    <title>Normativo</title>
+    <base href="/" />
+    <link media="print" rel="stylesheet"
+          href="https://www.pagedjs.org/css/pagedjs/interface.min.9b2f873f23cdd2a5e7c0f7a444b030c5.css">
+    <script src="https://www.pagedjs.org/js/paged.polyfill.e35b32228f7c0ce277c05a9b4d3db5c5.js" type="module"></script>
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="Normativo.Cliente.styles.css" rel="stylesheet" />
+
     <link href="favicon.ico" rel="shortcut icon" type="image/svg" />
 </head>
 
@@ -20,8 +24,8 @@
             Carregando...
         </button>
     </div>
-
-
+    <script src="jquery/jquery.min.js"></script>
+    <script src="scripts/jsReportNormativo.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 

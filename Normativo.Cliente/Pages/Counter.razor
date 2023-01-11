@@ -2,7 +2,14 @@
 @using Normativo.Cliente.Components
 
 <PageTitle>Counter</PageTitle>
-
+<AuthorizeView>
+    <Authorized>
+        The user is authorized
+    </Authorized>
+    <NotAuthorized>
+        The User is not authorized
+    </NotAuthorized>
+</AuthorizeView>
 <CounterPrint CurrentCount="currentCount" Title="Counter" />
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
